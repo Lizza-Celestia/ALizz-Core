@@ -3,6 +3,8 @@ General AI companion plugin manager.
 
 This project was made with Python 3.10.10 and VS Code in Windows 11.
 
+**Temporary** simple installation and custom plugin description   
+
 ## Installation
 Create and activate project environment:
 ```bash
