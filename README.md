@@ -18,8 +18,8 @@ Ready made plugins can be found at [ALizz-Plugins](https://github.com/Lizza-Cele
 ### Custom Plugins
 Use the sample_plugin.py script as refence for new custom plugins. 
 Naming requirements (Case sensitive) are:
-  Folder name: **pluginName**
-  script name: **pluginName**_Plugin.py
-  class name: class **PluginName**Plugin(BasePlugin)
-  __init__: def __init__(self, core, enabled=True):
+- Folder name: **pluginName**
+- script name: **pluginName**_Plugin.py
+- class name: class **PluginName**Plugin(BasePlugin)
+- __init__: def __init__(self, core, enabled=True):
                 self.core = core        # enables the event_bus for pub/sub events
