@@ -22,4 +22,4 @@ Naming requirements (Case sensitive) are:
 - script name: **plugin_name**_plugin.py
 - class name: class **P**lugin_name**P**lugin(BasePlugin)
 - __init__: def __init__(self, core, enabled=True):
-                self.core = core        # enables the event_bus for pub/sub events
+  - self.core = core        # enables the event_bus for pub/sub events
