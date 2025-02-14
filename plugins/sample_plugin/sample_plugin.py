@@ -11,7 +11,13 @@ Description:
 from core.base_plugin import BasePlugin
 import asyncio
 import logging
-from constants import *
+import os
+if os.path.exists("constants.py"):
+    from constants import *
+else:
+    # Define local constants
+    PATH_const      = "./plugins/sample/sample.txt"
+  
 logger = logging.getLogger(__name__)
 
 subscriptions_list = {
