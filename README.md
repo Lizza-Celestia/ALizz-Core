@@ -1,6 +1,7 @@
 # ALizz-Core
 General AI companion plugin manager.
 
+This project was made with Python 3.10.10 and in VS Code in Windows 11.
 
 ## Installation
 Create and activate project environment:
