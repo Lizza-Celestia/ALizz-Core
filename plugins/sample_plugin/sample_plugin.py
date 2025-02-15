@@ -20,6 +20,14 @@ else:
   
 logger = logging.getLogger(__name__)
 
+# manually updated list of published event for this plungin  
+publishing_list={"READY_SAMPLE": "bool: {sel.bool}",
+                 "SAMPLE_RESULTS": "content: {self.result}",
+                 }
+# how to log and publish an Event
+# logger.debug(f"[{plugin_name}] Publishing 'READY_SAMPLE' event.")
+# self.core.event_bus.publish(f"READY_SAMPLE",{"bool": self.bool})
+
 subscriptions_list = {
                         "TERMINATE_PLUGINS": "handle_terminate_event",
                         "STOP_SAMPLE": "handle_stop_event",
