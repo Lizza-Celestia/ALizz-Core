@@ -24,16 +24,16 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 
 ---
 
-## 📖 Table of Contents 
-- [Installation](#🔧-Installation)
+## Table of Contents 
+- [Installation](#Installation)
     - [Windows](#windows-installation-using-vs-code)
-- [Troubleshooting](#⚠️-Troubleshooting)
-- [Plugins](#🧩-Plugins)
+- [Troubleshooting](#Troubleshooting)
+- [Plugins](#Plugins)
 - [Inspiration & Credits](#Inspiration--credits)
 
 ---
 
-## 🔧 Installation
+## Installation
 ### Windows Installation Using VS Code
 
 1. **Install Python** (Recommended: Python 3.10.10)
@@ -63,7 +63,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 
 ---
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 ### 1. First-time Run Errors
 If an error occurs when running the code for the first time, follow these steps:
@@ -84,7 +84,7 @@ If an error occurs when running the code for the first time, follow these steps:
 
 ---
 
-## 🧩 Plugins
+## Plugins
 
 ### 🔹 Ready-made Plugins
 Find ready-made plugins at: [ALizz-Plugins](https://github.com/Lizza-Celestia/ALizz-Plugins)
