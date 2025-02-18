@@ -29,7 +29,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
     - [Windows](#windows-installation-using-vs-code)
 - [Troubleshooting](#⚠️-Troubleshooting)
 - [Plugins](#🧩-Plugins)
-- [Inspiration & Credits](#🌟-inspiration--credits)
+- [Inspiration & Credits](#Inspiration--credits)
 
 ---
 
@@ -114,7 +114,7 @@ An empty `__init__.py` file **must** be placed inside the plugin folder:
 
 ---
 
-## 🌟 Inspiration & Credits
+## Inspiration & Credits
 
 This is my first project using Python to develop a **modular AI assistant**. It took multiple iterations and concept refinements before reaching a design that I was happy with.
 
