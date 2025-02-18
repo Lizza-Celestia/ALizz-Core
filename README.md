@@ -38,11 +38,11 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 ### Windows Installation Using VS Code
 
 1. **Install Python** (Recommended: Python 3.10.10)
-   https://www.python.org/downloads/
+   - https://www.python.org/downloads/
    
 3. **Install VS Code** and the **Python extension**
-   https://code.visualstudio.com/
-   https://marketplace.visualstudio.com/items?itemName=ms-python.python
+   - https://code.visualstudio.com/
+   - https://marketplace.visualstudio.com/items?itemName=ms-python.python
    
 5. **Open the project folder** in VS Code
 6. **Create and activate a virtual environment:**
