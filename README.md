@@ -93,7 +93,7 @@ Use `sample_plugin.py` as a reference to create your own custom plugins.
 |----------------|------------------|
 | **Folder Name** | `plugin_name` |
 | **Script Name** | `plugin_name_plugin.py` |
-| **Class Name** | `class PluginNamePlugin(BasePlugin)` |
+| **Class Name** | `class Plugin_namePlugin(BasePlugin)` |
 | **Constructor** | `def __init__(self, core, enabled=True):` |
 
 Example `__init__` function:
