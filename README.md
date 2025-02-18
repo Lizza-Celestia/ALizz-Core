@@ -53,7 +53,8 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
    ```
 7. **Install required dependencies:**
    ```bash
-   pip install -r requirements.txt
+   pip install logging
+   <!-- pip install -r requirements.txt -->
    ```
 8. **Run the main script:**
    ```bash
