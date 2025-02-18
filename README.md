@@ -28,7 +28,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 - [Installation](#🔧-Installation)
     - [Windows](#windows-installation-using-vs-code)
 - [Troubleshooting](#⚠️-Troubleshooting)
-- [Plugins](#🧩-Plugins)
+- [Plugins](#--Plugins)
 - [Inspiration & Credits](#Inspiration--credits)
 
 ---
