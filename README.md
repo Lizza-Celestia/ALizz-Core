@@ -32,7 +32,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 - [Inspiration & Credits](#Inspiration--credits)
 
 ---
-
+🔧
 ## Installation
 ### Windows Installation Using VS Code
 
@@ -62,7 +62,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 <!-- > **Note:** Linux installation instructions will be added later. -->
 
 ---
-
+⚠️
 ## Troubleshooting
 
 ### 1. First-time Run Errors
@@ -83,7 +83,7 @@ If an error occurs when running the code for the first time, follow these steps:
 - Try running the script again.
 
 ---
-
+🧩
 ## Plugins
 
 ### 🔹 Ready-made Plugins
@@ -113,7 +113,7 @@ An empty `__init__.py` file **must** be placed inside the plugin folder:
 ```
 
 ---
-
+🌟
 ## Inspiration & Credits
 
 This is my first project using Python to develop a **modular AI assistant**. It took multiple iterations and concept refinements before reaching a design that I was happy with.
