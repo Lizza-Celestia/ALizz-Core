@@ -38,19 +38,24 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 ### Windows Installation Using VS Code
 
 1. **Install Python** (Recommended: Python 3.10.10)
-2. **Install VS Code** and the **Python extension**
-3. **Open the project folder** in VS Code
-4. **Create and activate a virtual environment:**
+   https://www.python.org/downloads/
+   
+3. **Install VS Code** and the **Python extension**
+   https://code.visualstudio.com/
+   https://marketplace.visualstudio.com/items?itemName=ms-python.python
+   
+5. **Open the project folder** in VS Code
+6. **Create and activate a virtual environment:**
    ```bash
    python -m venv venv_ALizz_Core
    .\venv_ALizz_Core\Scripts\activate
    python -m pip install --upgrade pip
    ```
-5. **Install required dependencies:**
+7. **Install required dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
-6. **Run the main script:**
+8. **Run the main script:**
    ```bash
    python main.py
    ```
