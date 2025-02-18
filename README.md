@@ -71,11 +71,11 @@ If an error occurs when running the code for the first time, follow these steps:
 
 - Open **PowerShell** and enter the following command:
   ```powershell
-  Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
   ```
-- Alternatively, for all users:
+- Alternatively, for all users (admin privileges):
   ```powershell
-  Set-ExecutionPolicy Unrestricted -Scope LocalMachine
+  Set-ExecutionPolicy –ExecutionPolicy RemoteSigned
   ```
 
 ### 2. Run Code Not Working in VS Code
