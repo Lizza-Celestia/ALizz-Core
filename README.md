@@ -27,6 +27,7 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 ## Table of Contents 
 - [Installation](#Installation)
     - [Windows](#windows-installation-using-vs-code)
+    - [Linux (Ubuntu)](#Linux-(Ubuntu))
 - [Troubleshooting](#Troubleshooting)
 - [Plugins](#Plugins)
 - [Inspiration & Credits](#Inspiration--credits)
@@ -34,7 +35,6 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 ---
 ## 🔧
 ## Installation
-### Windows Installation Using VS Code
 
 1. **Install Python** (Recommended: Python 3.10.10)
    - https://www.python.org/downloads/
@@ -50,16 +50,24 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
    .\venv_ALizz_Core\Scripts\activate
    python -m pip install --upgrade pip
    ```
-7. **Install required dependencies:**
-   ```bash
-   pip install logging
-   ```
-8. **Run the main script:**
+7. **Run the main script:**
    ```bash
    python main.py
    ```
 
-<!-- > **Note:** Linux installation instructions will be added later. -->
+### Linux (Ubuntu)
+1. **Create project folder**
+2. **Open terminal of the project folder**
+3. **Create and activate a virtual environment:**
+   ```bash
+   python3 -m venv ./venv_ALizz_Core
+   source ./venv_ALizz_Core/Scripts/activate
+   pip install --upgrade pip
+   ```
+4. **Run the main script:**
+   ```bash
+   python3 ./main.py
+   ```
 
 ---
 ## ⚠️
