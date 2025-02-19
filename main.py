@@ -25,7 +25,7 @@ async def main():
     core = Core(plugin_directory="plugins")
     # Start the system
     core.boot()
-    logger.debug(f"Loaded Plugin successfully: {core.plugin_manager.loaded_plugins}")
+    # logger.debug(f"Loaded Plugin successfully: {core.plugin_manager.loaded_plugins}")
     logger.debug(f"Publishing 'READY_CORE' event.")
     core.event_bus.publish("READY_CORE",{"bool": True})
     try:
