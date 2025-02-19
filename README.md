@@ -6,9 +6,6 @@ Ready-made plugins are available at [ALizz-Plugins](https://github.com/Lizza-Cel
 
 This project was originally developed as a **modular and flexible general AI assistant**, but it can be adapted for various use cases.
 
-## ⚠️ DISCLAIMER 
-**This project is a work in progress.** There may be **bugs** and areas that are **not fully optimized**. Contributions, feedback, and testing are welcome to help improve the system!
-
 ## How ALizz-Core Works
 
 Each component of an AI assistant is implemented as a plugin:
@@ -137,5 +134,8 @@ While working on this, I took inspiration from:
 - **[Neuro (by kimjammer)](https://github.com/kimjammer/Neuro)**
 - ChatGPT
 ---
+
+## ⚠️ DISCLAIMER 
+**This project is a work in progress.** There may be **bugs** and areas that are **not fully optimized**. Contributions, feedback, and testing are welcome to help improve the system!
 
 
