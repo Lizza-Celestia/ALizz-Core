@@ -6,7 +6,7 @@ Ready-made plugins are available at [ALizz-Plugins](https://github.com/Lizza-Cel
 
 This project was originally developed as a **modular and flexible general AI assistant**, but it can be adapted for various use cases.
 
-# ⚠️ DISCLAIMER 
+## ⚠️ DISCLAIMER 
 **This project is a work in progress.** There may be **bugs** and areas that are **not fully optimized**. Contributions, feedback, and testing are welcome to help improve the system!
 
 ## How ALizz-Core Works
