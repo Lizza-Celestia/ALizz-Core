@@ -3,7 +3,7 @@ File Location: main.py
 Author: Lizza Celestia
 Version: ALizz_AI_V0_9
 Created Date: 2025-02-12
-Modified Date: 2025-02-14
+Modified Date: 2025-02-19
 Description:
 
 """
@@ -17,12 +17,12 @@ if os.path.exists("constants.py"):
 else:
     # Define local constants
     PATH_const      = "./plugins/sample/sample.txt"
-  
+
 logger = logging.getLogger(__name__)
 
-# manually updated list of published event for this plungin  
-publishing_list={"READY_SAMPLE": "bool: {sel.bool}",
-                 "SAMPLE_RESULTS": "content: {self.result}",
+# manually update list of published event for this plungin  
+publishing_list={"READY_SAMPLE": "bool: {bool}",
+                 "TTS_SPEAKING": "bool: {bool}",
                  }
 # how to log and publish an Event
 # logger.debug(f"[{plugin_name}] Publishing 'READY_SAMPLE' event.")
@@ -30,8 +30,8 @@ publishing_list={"READY_SAMPLE": "bool: {sel.bool}",
 
 subscriptions_list = {
                         "TERMINATE_PLUGINS": "handle_terminate_event",
-                        "STOP_SAMPLE": "handle_stop_event",
-                        "START_SAMPLE": "handle_start_event",
+                        "STOP_sample": "handle_stop_sample_event",
+                        # "START_SAMPLE": "handle_start_event",
                         }
 
 plugin_name = "Sample"
@@ -41,14 +41,14 @@ class SamplePlugin(BasePlugin):
 #####################################################
 #                  Initialize
 #####################################################
-    def __init__(self, core, enabled=True):
+    def __init__(self, core):
         self.core = core        # enables the event_bus
-        self.enabled = enabled
-        self.running = False
+        self.stop_event = asyncio.Event()  # Async event to signal stopping
+
         # Subscribe to an event (e.g., "PLUGIN_STARTED")
         for event, handler in subscriptions_list.items():
             self.core.event_bus.subscribe(event, getattr(self, handler))
-            logger.debug(f"[{plugin_name}] Subscribed to '{event}' with handler '{handler}'.")
+            logger.info(f"[{plugin_name}] Subscribed to '{event}' with handler '{handler}'.")
             
         self.count = 0 # for testing sample plugin
 
@@ -63,27 +63,31 @@ class SamplePlugin(BasePlugin):
 #                  Run sequence
 #####################################################
     async def run(self):
-        if self.count < 10:
-            for count in range(10):
-                logger.info(f"[{plugin_name}] {self.count} sample data is running...")
-                self.count = count
-            self.count += 1
-        logger.info(f"[{plugin_name}] is running sample: {self.running}")
+        while not self.stop_event.is_set():
+            if self.count < 10:
+                for count in range(10):
+                    logger.info(f"[{plugin_name}] {self.count} sample data is running...")
+                    self.count = count + 1
+            logger.info(f"[{plugin_name}] is running sample.")
+            await asyncio.sleep(5)  # Simulate async work
+        logger.debug(f"[{plugin_name}] event loop stopped.")
+
 
 #####################################################
 #                  Event Functions
 #####################################################
-    async def handle_start_event(self, data):
-        # self.running = data["content"]
-        self.running = True
-        self.count = 0
-        await self.run()
-
-    async def handle_stop_event(self, data):
-        # self.running = data["content"]
-        self.running = False
-        self.count = 0
-        await self.run()
-
     async def handle_terminate_event(self, data):
-        self.enabled = False
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            loop.call_soon_threadsafe(self.stop_event.set)  # Signal stop event in async loop
+
+    async def handle_stop_sample_event(self, data):
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            loop.call_soon_threadsafe(self.stop_event.set)  # Signal stop event in async loop
+
+    # async def handle_start_event(self, data):
+        # self.running = data["content"]
+        # self.count = 0
+        # await self.run()
+
