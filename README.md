@@ -26,8 +26,8 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 ## 📖
 ## Table of Contents 
 - [Installation](#Installation)
-    - [Windows](#windows-installation-using-vs-code)
-    - [Linux (Ubuntu)](#Linux-(Ubuntu))
+    - [Windows](##windows-installation-using-vs-code)
+    - [Linux (Ubuntu)](##Linux-(Ubuntu))
 - [Troubleshooting](#Troubleshooting)
 - [Plugins](#Plugins)
 - [Inspiration & Credits](#Inspiration--credits)
