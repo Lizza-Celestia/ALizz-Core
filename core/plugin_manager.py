@@ -3,7 +3,7 @@ File Location: core/plugin_manager.py
 Author: Lizza Celestia
 Version: ALizz_AI_V0_9
 Create Date: 2025-02-12
-Modified Date: 2025-02-14
+Modified Date: 2025-02-19
 Description:
 """
 # core/plugin_manager.py
@@ -25,14 +25,46 @@ class PluginManager:
         self.module_threads = {}
 
     def discover_plugins(self):
+        """
+        Scan the plugin folder and load active plugins, plugins with existing __init__.py
+        """
         logger.debug(f"PluginManager: Scanning directory: {self.plugin_directory}")
         for item in self.plugin_directory.iterdir():
-            logger.debug(f"Checking: {item} (Is dir? {item.is_dir()})")
-            if item.is_dir() and (item / "__init__.py").exists():
-                logger.debug(f"Found plugin candidate: {item.name}")
-                self._load_plugin(item.name)
-            else:
-                logger.debug(f"Skipping {item.name} (not a plugin or missing __init__.py)")
+            try:
+                logger.debug(f"Checking: {item} (Is dir? {item.is_dir()})")
+                if item.is_dir() and (item / "__init__.py").exists():
+                    logger.debug(f"Found plugin candidate: {item.name}")
+                    self._load_plugin(item.name)
+                else:
+                    logger.debug(f"Skipping {item.name} (not a plugin or missing __init__.py)")
+            except Exception as e:
+                logging.error(f"'Error discovering' plugin '{item}': {e}")
+
+    def rediscover_plugins(self):
+        """
+        Rescan the plugin folder and load new active plugins and unload deactivate plugins
+        """
+        logger.debug(f"PluginManager: Scanning directory: {self.plugin_directory}")
+        for item in self.plugin_directory.iterdir():
+            try:
+                logger.debug(f"Checking: {item} (Is dir? {item.is_dir()})")
+                if item.is_dir() and (item / "__init__.py").exists():       # check if the plugin is active
+                    if item.name in self.loaded_plugins:                    # if the plugin is already loaded, ignore an go to next
+                        logger.debug(f"Plugin '{item.name}' is already loaded") 
+                        continue
+                    logger.debug(f"Loading newly activated plugin: '{item.name}'")        
+                    self._load_plugin(item.name)
+
+                elif item.is_dir() and not (item / "__init__.py").exists(): # if the plugin is inactive
+                    if item.name in self.loaded_plugins:                    # check if the plugin was loaded
+                        logger.debug(f"Unloading deactivated plugin: '{item.name}'")
+                        self.unload_plugin(item.name)                       # if so unloaded
+                else:
+                    logger.debug(f"Skipping '{item.name}' (not a plugin)")
+                        
+            except Exception as e:
+                logging.error(f"'Error discovering' plugin '{item}': {e}")
+
 
     def _load_plugin(self, plugin_name: str):
         """
@@ -51,13 +83,14 @@ class PluginManager:
             plugin_class = getattr(module, class_name)
             
             # Instantiate the plugin
-            plugin_instance = plugin_class(self.core, enabled=True)
+            plugin_instance = plugin_class(self.core)
             if isinstance(plugin_instance, BasePlugin):
                 self.loaded_plugins[plugin_name] = plugin_instance
 
                 # Initialize and start every discovered plugin in a thread
                 logger.debug(f"Initializing plugin 'thread' for '{plugin_name}'...")
                 module_thread = threading.Thread(target=plugin_instance.init_event_loop, daemon=True)
+                logger.debug(f"Thread'{module_thread}'.")
                 self.module_threads[plugin_name] = module_thread
                 module_thread.start()
                 logger.info(f"Plugin '{plugin_name}' 'loaded' successfully.")
@@ -95,10 +128,14 @@ class PluginManager:
             try:
                 logger.debug(f"[{plugin_name}] Publishing 'STOP_{plugin_name}' event.")
                 self.core.event_bus.publish(f"STOP_{plugin_name}",{"bool": True})
-                self.module_threads[plugin_name].join()
-                logger.debug(f"Plugin '{plugin_name}' thread 'joined'.")
-                del self.loaded_plugins[plugin_name]
-                logger.info(f"Plugin '{plugin_name}' 'unloaded'.")
+
+                module_thread = self.module_threads[plugin_name]
+                if module_thread and module_thread.is_alive():
+                    logger.debug(f"'{plugin_name}' Thread to join: '{module_thread}'.")
+                    module_thread.join()
+                    logger.debug(f"Plugin '{plugin_name}' thread 'joined'.")
+                    del self.loaded_plugins[plugin_name]
+                    logger.info(f"Plugin '{plugin_name}' 'unloaded'.")
                 
             except Exception as e:
                 logging.error(f"'Error unloading' module {plugin_name}: {e}")
