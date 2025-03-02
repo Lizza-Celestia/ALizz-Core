@@ -1,9 +1,9 @@
 """
 File Location: core/event_bus.py
 Author: Lizza Celestia
-Version: ALizz_AI_V0_9
+Version: ALizz_AI_V1_0
 Create Date: 2025-02-13
-Modified Date: 2025-02-14
+Modified Date: 2025-03-02
 Description:
 """
 # import asyncio
@@ -40,7 +40,25 @@ class EventBus:
             self.event_queue.put((event_type, data))
             
         else:
-            logger.warning(f"[{plugin_name}] There is NO subcription for Event: '{event_type}', data:'{data}'")
+            logger.warning(f"[{plugin_name}] There is NO subcription for Event: {event_type}, data:{data}")
+
+    def unsubscribe(self, event_type: str, callback):
+        """
+        Unsubscribe a callback from a specific event type.
+        :param event_type: The event type to stop listening for.
+        :param callback: The function to remove from subscribers.
+        """
+        if event_type in self._subscribers:
+            try:
+                self._subscribers[event_type].remove(callback)
+                if not self._subscribers[event_type]:  # Remove the key if empty
+                    del self._subscribers[event_type]
+                logger.info(f"[{plugin_name}] Unsubscribed from '{event_type}'.")
+            except ValueError:
+                logger.warning(f"[{plugin_name}] Callback not found in '{event_type}' subscription list.")
+        else:
+            logger.warning(f"[{plugin_name}] Attempted to unsubscribe from non-existent event '{event_type}'.")
+
 
     def process_events(self):
         """Continuously process events in the queue (Run in a separate thread)"""
