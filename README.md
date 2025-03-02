@@ -75,12 +75,12 @@ Plugins function as **independent black boxes** with defined inputs and outputs,
 
 ### 1. First-time Run Errors
 If an error occurs when running the code for the first time, follow these steps:
-
-- Open **PowerShell** and enter the following command:
+[about_Execution_Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5)
+- Open **PowerShell** and enter the following command (current user):
   ```powershell
   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
   ```
-- Alternatively, for all users (admin privileges):
+- Alternatively, for all users (Run as administrator):
   ```powershell
   Set-ExecutionPolicy –ExecutionPolicy RemoteSigned
   ```
