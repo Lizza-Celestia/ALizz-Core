@@ -132,7 +132,6 @@ This is my first project using Python to develop a **modular AI assistant**. It 
 While working on this, I took inspiration from:
 - **[Neuro-sama second annual subathon (2024-2025)](https://www.youtube.com/@Neurosama)**
 - **[Neuro (by kimjammer)](https://github.com/kimjammer/Neuro)**
-- ChatGPT
 ---
 
 ## ⚠️ DISCLAIMER 
